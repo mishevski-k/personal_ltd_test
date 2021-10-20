@@ -169,6 +169,209 @@ footer > h1 {
     transition: 0.50s ease-in;
 }
 
+.main-container {
+    background-color: var(--clr-neutral-200);
+    width: 100%;
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+}
+
+.main-container > .calls-container {
+    border: 4px solid var(--clr-primary-600);
+    width: 100%;
+    height: 50vh;
+    overflow-y: scroll;
+}
+
+.main-container > .calls-container > table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.main-container > .calls-container::-webkit-scrollbar {
+    width: 0.5em;
+    background-color: var(--clr-neutral-400);
+}
+   
+.main-container > .calls-container::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+   
+.main-container > .calls-container::-webkit-scrollbar-thumb {
+    background-color: var(--clr-secondary-400);
+    outline: 1px solid var(--clr-secondary-400);
+}
+
+.main-container > .calls-container > table > thead {
+    background-color: var(--clr-secondary-600);
+}
+
+.main-container > .calls-container > table > thead > tr > th {
+    padding: 0.5rem 0.2rem;
+}
+
+.main-container > .calls-container > table > tbody > tr {
+    border-bottom: 1px solid var(--clr-neutral-400);
+}
+
+.main-container > .calls-container > table > tbody > tr > td {
+    padding: 0.5rem 0;
+    font-weight: 500;
+    text-align: center;
+}
+
+.main-container > .calls-container > table > tbody > tr > .call-type {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-container > .calls-container > table > tbody > tr > .call-type > i {
+    margin-inline: 0.5rem;
+}
+
+.main-container > .calls-container > table > tbody > tr > .edit-item > form > input{
+    border: 0;
+    outline: none;
+    background-color: var(--clr-primary-600);
+    font-size: var(--fs-s);
+    font-weight: 600;
+    color: var(--clr-neutral-200);
+    padding: 0.4rem;
+    cursor: pointer;
+}
+
+.main-container > .calls-container > table > tbody > tr > .edit-item > form > input:hover {
+    background-color: var(--clr-primary-1000);
+    transition: 0.50s ease-in;
+}
+
+.main-container > .calls-container > a > i {
+    margin: 1rem;
+    color: var(--clr-neutral-400);
+    cursor: pointer;
+}
+
+.main-container > .calls-container > a > i:hover {
+    color: var(--clr-neutral-600);
+    transition: 0.40s ease-in;
+}
+
+.call-container {
+    width: 100%;
+    background-color: var(--clr-neutral-200);
+    min-height: 80vh;
+    padding: 4rem;
+}
+
+.call-container > .call-form {
+    padding: 2rem;
+    min-width: 50%;
+    border: 4px solid var(--clr-primary-600);
+}
+
+.call-container > .call-form > form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.call-container > .call-form > form > h1 {
+    font-size: var(--fs-xl);
+    color: var(--clr-primary-600);
+}
+
+
+.call-container > .call-form > form > .form-item {
+    margin-block: 0.5rem;
+    padding: 0.5rem;
+    min-width: 30%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.call-container > .call-form > form > .form-item > .form-label {
+    font-size: var(--fs-l);
+    font-weight: 600;
+    color: var(--clr-secondary-800);
+    margin-block: 0.4rem;
+}
+
+.call-container > .call-form > form > .form-item > .form-input , .form-date, .form-select {
+    border: none;
+    outline: none;
+    padding: 0.3rem 0.6rem;
+    font-size: var(--fs-m);
+    font-weight: 500;
+    color: var(--clr-neutral-800);
+    border-radius: 25px;
+}
+
+.call-container > .call-form > form > .form-item > .form-submit {
+    background-color: var(--clr-success-400);
+    border: none;
+    outline: none;
+    font-size: var(--fs-m);
+    font-weight: 600;
+    color: var(--clr-neutral-200);
+    padding: 0.5rem;
+    border-radius: 25px;
+    cursor: pointer;
+}
+
+.call-container > .call-form > form > .form-item > .form-error {
+    color: var(--clr-danger-600);
+    font-size: var(--fs-s);
+    margin-block: 0.3rem;
+}
+
+.call-container > .call-form > form > .form-item > .form-submit:hover {
+    background-color: var(--clr-success-600);
+    transition: 0.60s ease-in;
+}
+
+.form-select {
+    color: var(--clr-neutral-200);
+    background-color: var(--clr-secondary-400);
+}
+
+.form-select::-webkit-scrollbar {
+    width: 0.5em;
+    background-color: var(--clr-secondary-400);
+}
+
+.form-select::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+.form-select::-webkit-scrollbar-thumb {
+    background-color: var(--clr-secondary-600);
+    outline: 1px solid var(--clr-secondary-400);
+    border-radius: 25px;
+}
+
+.delete-call {
+    border: none;
+    outline: none;
+    padding: 0.5rem;
+    font-size: var(--fs-m);
+    border-radius: 25px;
+    font-weight: 600;
+    background-color: var(--clr-danger-400);
+    color: var(--clr-neutral-200);
+    cursor: pointer;
+}
+
+.delete-call:hover {
+    background-color: var(--clr-danger-600);
+    transition: 0.40s ease-in;
+}
+
 @media only screen and (max-width: 1024px) {
     nav {
         flex-direction: column;

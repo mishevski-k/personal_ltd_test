@@ -1,4 +1,9 @@
 $(document).ready(function(){
+
+    if ( window.history.replaceState ) {  
+        window.history.replaceState( null, null, window.location.href );
+    }
+
     $(".nav-menu").click(function(){
         if($(".nav-links").css("display") === "none") {
             $(".nav-links").css('display', 'block');

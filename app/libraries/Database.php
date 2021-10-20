@@ -28,21 +28,8 @@
             $this->statement = $this->dbHandler->prepare($sgl);
         }
 
-        public function bind($parametar, $value, $type = null) {
-            switch (is_null($type)) {
-                case is_int($value):
-                    $type = PDO::PARAM_INT;
-                    break;
-                case is_bool($value):
-                    $type = PDO::PARAM_BOOL;
-                    break;
-                case is_null($value):
-                    $type = PDO::PARAM_NULL;
-                    break;
-                dafault:
-                    $type = PDO::PARAM_STR;
-            }
-            $this->statement->bindValue($parametar, $value, $type);
+        public function bind($parametar, $value) {
+            $this->statement->bindValue($parametar, $value);
         }
 
         public function execute() {
