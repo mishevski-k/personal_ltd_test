@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+    --clr-neutral-200: #ece8de;
+    --clr-neutral-400: #999999;
+    --clr-neutral-600: #474542;
+    --clr-neutral-800: #2B2A28;
+    --clr-neutral-1000: #1f1e1d;
+
+
+    --clr-primary-200: #EEC633;
+    --clr-primary-400: #EFB528;
+    --clr-primary-600: #F0AC22;
+    --clr-primary-800: #F0A31D;
+    --clr-primary-1000: #F19A17;
+
+    --clr-secondary-200: #188DF2;
+    --clr-secondary-400: #1F7FF1;
+    --clr-secondary-600: #2571F0;
+    --clr-secondary-800: #2C63F0;
+    --clr-secondary-1000: #3947EE;
+
+    --clr-accent-200: ;
+    --clr-accent-800: ;
+
+    --clr-danger-400: rgb(202,52,51);
+    --clr-danger-600: rgb(172, 26, 28);
+
+    --clr-success-400: rgb(76,187,23);
+    --clr-success-600: rgb(34,139,34);
+
+
+    --fs-xs: 0.6rem;
+    --fs-s: 0.8rem;
+    --fs-m: 1.1rem;
+    --fs-l: 1.6rem;
+    --fs-xl: 2.8em;
+
+    --ff-primary: 'Montserrat', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: var(--ff-primary);
+}
+
+body::-webkit-scrollbar {
+    width: 0.5em;
+    background-color: var(--clr-primary-800);
+}
+   
+body::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+   
+body::-webkit-scrollbar-thumb {
+    background-color: var(--clr-accent-500);
+    outline: 1px solid var(--clr-primary-800);
+}
+
+a {
+    text-decoration: none;
+    font-weight: 500;
+    font-size: var(--fs-m);
+    color: var(--clr-neutral-800);
+}
+
+.danger {
+    background-color: var(--clr-danger-400);
+}
+
+.danger:hover {
+    background-color: var(--clr-danger-600);
+}
+
+.success {
+    background-color: var(--clr-success-400);
+}
+
+.clr-success {
+    color: var(--clr-success-400);
+}
+
+.clr-danger {
+    color: var(--clr-danger-400);
+}
+
+.clr-info {
+    color: var(--clr-secondary-600);
+}
+
+.box-shadow-1 {
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
+}
+
+@media only screen and (max-width: 1024px) {
+    :root {
+        --fs-xs: 0.5rem;
+        --fs-s: 0.7rem;
+        --fs-m: 0.9rem;
+        --fs-l: 1.2rem;
+        --fs-xl: 2em;
+    }
+}
+
+@media only screen and (max-width: 640px) {
+    :root {
+        --fs-xs: 0.3rem;
+        --fs-s: 0.5rem;
+        --fs-m: 0.7rem;
+        --fs-l: 0.9rem;
+        --fs-xl: 1.6em;
+    }
+}
+
+@media only screen and (max-width: 420px) {
+    :root {
+        --fs-xs: 0.3rem;
+        --fs-s: 0.4rem;
+        --fs-m: 0.5rem;
+        --fs-l: 0.7rem;
+        --fs-xl: 1.2em;
+    }
+}
