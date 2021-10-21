@@ -7,4 +7,6 @@ Instructions to set up the web app.
     -if you make a new database: import the sgl file to your database and change the database name in app/config/config.php on line 6.
     -if you import the database no changes need to be made in config for dabase name.
 3.In app/config/config.php add your username and password, if you havent changed your xampp details no changes need to be made here.
-4.If the root folder of your web app is different than "peronal_ltd_test"
+4.If the root folder of your web app is different than "peronal_ltd_test" go to app/config/config.php and change http://localhost/personal_ltd_test on line 12 to whatever your folder is called,
+    and in /public/.htaccess and changer this   RewriteBase /personal_ltd_test/public on line 4 to whatever you folder is called.
+5.If the web app open you will be welcomed with a empty dashboard view, to import the data go to the import link on the navbar, select the file.csv from the folder, and hit upload

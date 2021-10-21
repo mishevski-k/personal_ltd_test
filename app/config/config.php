@@ -12,9 +12,6 @@
     define('URLROOT', 'http://localhost/personal_ltd_test'); 
 
 
-    // --FOR THE USE WITH A MOBILE DEVICE UNCOMMENT THIS AND COMMENT THE ABOVE
-    // define('URLROOT', 'http://192.168.1.7/personal_ltd_test/'); 
-
     //Sitename
     define('SITENAME', 'Personal LTD TEST');
 
