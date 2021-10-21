@@ -3,7 +3,7 @@
     <?php require APPROOT . "/views/includes/nav.php" ?>
     <?php printNav("Home") ?>
     <div class="main-container">
-    <a href="<?php echo URLROOT ?>/admin/newCall"><i class="gg-add-r"></i></a>
+    <a href="<?php echo URLROOT ?>/admin/newCall"><i class="gg-add-r"></i>New Call</a>
         <div class="calls-container">
 
         </div>

@@ -251,6 +251,9 @@ footer > h1 {
 
 .main-container > a {
     align-self: flex-start;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .main-container > a > i {
