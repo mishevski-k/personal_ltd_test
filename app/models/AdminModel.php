@@ -19,19 +19,23 @@
             }
         }
 
-        public function getCalls($column = "", $key = "", $order_by = 'date', $order = "DESC", $limit = 0){
+        public function getCalls($column = "", $key = "", $order_by = 'date', $order = "DESC", $limit = 0, $offset = 0){
             if($this->tableExists('calls')){
                 if($column == ""){
                     if($limit === 0) {
                         $this->db->query("SELECT * FROM calls ORDER BY $order_by $order ");
-                    }else {
+                    }elseif($offset == 0) {
                         $this->db->query("SELECT * FROM calls ORDER BY $order_by $order LIMIT $limit");
+                    }else {
+                        $this->db->query("SELECT * FROM calls ORDER BY $order_by $order LIMIT $limit OFFSET $offset");
                     }
                 }else {
                     if($limit === 0) {
                         $this->db->query("SELECT * FROM calls WHERE $column = '$key' ORDER BY $order_by $order ");
-                    }else {
+                    }elseif($offset == 0) {
                         $this->db->query("SELECT * FROM calls WHERE $column = '$key' ORDER BY $order_by $order LIMIT $limit");
+                    }else {
+                        $this->db->query("SELECT * FROM calls WHERE $column = '$key' ORDER BY $order_by $order LIMIT $limit OFFSET $offset");
                     }
                 }
                 

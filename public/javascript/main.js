@@ -26,7 +26,6 @@ $(document).ready(function(){
         $(".selected-file").html("Nothing selected")
     }
 
-    console.log($("#import-csv").val());
     $("#import-csv").change(function(){
         console.log()
         $(".selected-file").html($("#import-csv").val().split('\\').pop())

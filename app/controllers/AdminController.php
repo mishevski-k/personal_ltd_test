@@ -1,8 +1,10 @@
 <?php
+
+    //Controller for Admin functions and views (inhericts from core controller)
     Class AdminController extends Controller {
         
         public function __construct() {
-            $this->adminModel = $this->model('AdminModel');
+            $this->adminModel = $this->model('AdminModel');  //Connection to the appropriate model
         }
 
         public function index() {
@@ -14,6 +16,22 @@
             ];
 
             $this->view('/admin/dashboard', $data);
+        }
+        
+        public function calls(){
+
+            if($_SERVER['REQUEST_METHOD'] === 'POST'){
+                $offset = $_POST['page_number'] * 100;
+                $data = [
+                    'calls' => $this->adminModel->getCalls("", "", 'id', 'ASC', 100, $offset),
+                    'page_number' => $_POST['page_number']
+                ];
+    
+                $this->view("/admin/callsTable", $data);
+            }else {
+                header("location: ". URLROOT);
+            }
+            
         }
 
         public function call($id){

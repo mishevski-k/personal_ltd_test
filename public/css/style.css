@@ -474,6 +474,37 @@ footer > h1 {
     font-weight: 500;
 }
 
+.calls-page {
+    border: none;
+    outline: none;
+    background-color: var(--clr-primary-600);
+    padding: 0.4rem;
+    font-size: var(--fs-s);
+    color: var(--clr-neutral-200);
+    margin: 0.4rem;
+    cursor: pointer;
+}
+
+.filter-container {
+    width: 100%;
+    text-align: center;
+}
+
+.calls-page:hover {
+    background-color: var(--clr-primary-1000);
+    transition: 0.50s ease-in;
+}
+
+.calls-page.active {
+    background-color: var(--clr-secondary-600);
+    padding: 0.7rem;
+}
+
+.calls-page.active:hover {
+    background-color: var(--clr-secondary-800);
+    transition: 0.50s ease-in;
+}
+
 @media only screen and (max-width: 1024px) {
     nav {
         flex-direction: column;

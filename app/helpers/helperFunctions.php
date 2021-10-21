@@ -8,7 +8,9 @@ function formatString($string) {
 // 30 -> 30Sec
 // 60 -> 1Min
 // 65 -> 1Min 5Sec
-//3599 -> 59Min
+//3599 -> 59Min 59Sec
+//3600 -> 1Hr
+//5401 -> 1Hr 30Min 1Sec
 
 function formatSeconds($seconds){
     if($seconds < 60){
