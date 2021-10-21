@@ -1,5 +1,5 @@
 <?php 
-
+//function to print navbar
 function printNav($page) {
     ?>
 
