@@ -249,13 +249,17 @@ footer > h1 {
     transition: 0.50s ease-in;
 }
 
-.main-container > .calls-container > a > i {
+.main-container > a {
+    align-self: flex-start;
+}
+
+.main-container > a > i {
     margin: 1rem;
     color: var(--clr-neutral-400);
     cursor: pointer;
 }
 
-.main-container > .calls-container > a > i:hover {
+.main-container > a > i:hover {
     color: var(--clr-neutral-600);
     transition: 0.40s ease-in;
 }
@@ -370,6 +374,67 @@ footer > h1 {
 .delete-call:hover {
     background-color: var(--clr-danger-600);
     transition: 0.40s ease-in;
+}
+
+.main-container > .users-container {
+    border: 4px solid var(--clr-primary-600);
+    width: 100%;
+    height: 50vh;
+    overflow-y: scroll;
+    margin-block: 4rem;
+    padding: 0.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.main-container > .users-container > .user {
+    border: 4px solid var(--clr-secondary-600);
+    margin-block: 0.4rem;
+    min-width: 30%;
+    padding: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.main-container > .users-container > .user > form > input {
+    border: none;
+    outline: none;
+    background-color: var(--clr-primary-600);
+    color: var(--clr-neutral-200);
+    font-size: var(--fs-m);
+    font-weight: 600;
+    padding: 0.4rem;
+    cursor: pointer;
+}
+
+.main-container > .users-container > .user > form > input:hover {
+    background-color: var(--clr-primary-1000);
+    transition: 0.60s ease-in;
+}
+
+.main-container > .users-container > .user > h1 {
+    font-size: var(--fs-m);
+    color: var(--clr-secondary-600);
+}
+
+.main-container > .users-container > .user > h1 > span {
+    color: var(--clr-neutral-800);
+}
+
+.main-container > .users-container::-webkit-scrollbar {
+    width: 0.5em;
+    background-color: var(--clr-neutral-400);
+}
+   
+.main-container > .users-container::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+   
+.main-container > .users-container::-webkit-scrollbar-thumb {
+    background-color: var(--clr-secondary-400);
+    outline: 1px solid var(--clr-secondary-400);
 }
 
 @media only screen and (max-width: 1024px) {

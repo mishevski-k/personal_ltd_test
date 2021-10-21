@@ -10,6 +10,7 @@
 
             $data = [
                 'calls' => $calls_data,
+                'users' => $this->adminModel->getALlUsers(),
             ];
 
             $this->view('/admin/dashboard', $data);
@@ -49,6 +50,9 @@
 
         public function editCall($id){
             if($_SERVER['REQUEST_METHOD'] === 'POST'){
+
+                $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
                 $data = [
                     'id' => $id,
                     'data' => $_POST,
@@ -69,11 +73,11 @@
                 }
 
                 if(empty($data['data']['duration'])){
-                    $data['duration_error'] = "duration cant be empy";
+                    $data['duration_error'] = "duration can't be empy";
                 }
 
                 if(empty($data['data']['external_call_score'])){
-                    $data['score_error'] = "External call score cant be empty";
+                    $data['score_error'] = "External call score can't be empty";
                 }
 
                 if(empty($data['data']['date_error']) && empty($data['data']['duration_error']) && empty($data['data']['score_error'])){
@@ -90,6 +94,70 @@
                
             }else {
                 header("location: ". URLROOT);
+            }
+        }
+
+        public function newCall(){
+
+            $data = [
+                'users' => $this->adminModel->getALlUsers(),
+                'clients' => $this->adminModel->getAllClients(),
+                'client_typies' => $this->adminModel->getClientTypies(),
+                'date_error' => "",
+                'duration_error' => "",
+                'score_error' => "",
+                'user_error' => "",
+                'client_error' => "",
+                'client_type_error' => "",
+                'type_of_call_error' => "",
+            ];
+
+            if($_SERVER['REQUEST_METHOD'] === 'POST'){
+
+                $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+                $data['data'] = $_POST;
+                $data['date_now'] = date("Y-m-d H:i:s");
+
+                if(empty($data['select-user'])){
+                    $data['user_error'] = "User field can't be empty";
+                }
+
+                if(empty($data['select-client'])){
+                    $data['client_error'] = "Client field can't be empty";
+                }
+
+                if(empty($data['select-client_type'])){
+                    $data['client_type_error'] = "Client Type field can't be empty";
+                }
+
+                if(empty($data['data']['date'])){
+                    $data['date_error'] = "Date field cant be empty";
+                }
+
+                if(empty($data['data']['duration'])){
+                    $data['duration_error'] = "duration field can't be empy";
+                }
+
+                if(empty($data['data']['type_of_call'])){
+                    $data['type_of_call_error'] = "Type of call field can't be empty";
+                }
+
+                if(empty($data['data']['external_call_score'])){
+                    $data['score_error'] = "External call score field can't be empty";
+                }
+
+                if(empty($data['data']['user_error']) && empty($data['data']['client_error']) && empty($data['data']['client_type_error']) && empty($data['data']['date_error']) && empty($data['data']['duration_error']) && empty($data['data']['type_of_call_error']) && empty($data['data']['score_error'])){
+                    if($this->adminModel->newCall($data)){
+                        header("location: ". URLROOT);
+                    }else {
+                        die("An error occured");
+                    }
+                }else {
+                    $this->view("/admin/newCall", $data);
+                }
+            }else{
+                $this->view("/admin/newCall", $data);
             }
         }
 

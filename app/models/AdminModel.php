@@ -117,6 +117,28 @@
             }
         }
 
+        public function newCall($data){
+            $this->db->query("INSERT INTO calls (user, client, client_type, date, duration, type_of_call, external_call_score, created_at, updated_at) VALUES (:user, :client, :client_type, :date, :duration, :type_of_call, :external_call_score, :created_at, :updated_at) ");
+
+
+            $this->db->bind(":user", $data['data']['select-user']);
+            $this->db->bind(":client", $data['data']['select-client']);
+            $this->db->bind(":client_type", $data['data']['select-client-type']);
+            $this->db->bind(":date", date("Y-m-d H:i:s", strtotime($data['data']['date'])));
+            $this->db->bind(":duration", $data['data']['duration']);
+            $this->db->bind(":type_of_call", $data['data']['type_of_call']);
+            $this->db->bind(":external_call_score", $data['data']['external_call_score']);
+            $this->db->bind(":created_at", $data['date_now']);
+            $this->db->bind(":updated_at", $data['date_now']);
+
+            if($this->db->execute()){
+                return true;
+            }else {
+                return false;
+            }
+
+        }
+
         public function import($data) {
             $this->db->query("INSERT INTO calls (user, client, client_type, date, duration, type_of_call, external_call_score, created_at, updated_at) VALUES (:user, :client, :client_type, :date, :duration, :type_of_call, :external_call_score, :created_at, :updated_at) ");
 
