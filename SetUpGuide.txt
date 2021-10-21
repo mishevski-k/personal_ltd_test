@@ -1,0 +1,10 @@
+Instructions to set up the web app.
+
+
+1.Copy all files to your xampp\htdocs\peronal_ltd_test
+    -for example E:\Software\Xampp\htdocs\peronal_ltd_test.
+2.You can either create a new database with name of your own or just import the database below:
+    -if you make a new database: import the sgl file to your database and change the database name in app/config/config.php on line 6.
+    -if you import the database no changes need to be made in config for dabase name.
+3.In app/config/config.php add your username and password, if you havent changed your xampp details no changes need to be made here.
+4.If the root folder of your web app is different than "peronal_ltd_test"
