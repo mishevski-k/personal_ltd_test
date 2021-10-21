@@ -4,6 +4,12 @@ function formatString($string) {
     return trim(str_replace('"', '', $string));
 }
 
+//FUNCTIONS TO CONVERT PLAIN SECONDS TO APPROPRIATE TIME EQUIVALENT
+// 30 -> 30Sec
+// 60 -> 1Min
+// 65 -> 1Min 5Sec
+//3599 -> 59Min
+
 function formatSeconds($seconds){
     if($seconds < 60){
         $seconds_suffix = "Sec";
