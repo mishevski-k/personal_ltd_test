@@ -6,7 +6,7 @@
         }
 
         public function index() {
-            $calls_data = $this->adminModel->getCalls('date', 'DESC', 100);
+            $calls_data = $this->adminModel->getCalls("", "", 'date', 'DESC', 100);
 
             $data = [
                 'calls' => $calls_data,
@@ -159,6 +159,23 @@
             }else{
                 $this->view("/admin/newCall", $data);
             }
+        }
+
+        public function user($key) {
+            $user = explode("_", $key);
+            $key = str_replace("_", " ", $key);
+            
+            $data = [
+                "calls" => $this->adminModel->getCalls("user", $key, "date", "DESC"),
+                "user_name" => $user[0],
+                "user_surname" => $user[1],
+                "avarage_score" => $this->adminModel->getAvarageScore($key),
+                "limit" => 5,
+            ];
+
+            $this->view("/admin/user", $data);
+
+            
         }
 
         public function import() {

@@ -19,13 +19,22 @@
             }
         }
 
-        public function getCalls($order_by = 'date', $order = "DESC", $limit = 0){
+        public function getCalls($column = "", $key = "", $order_by = 'date', $order = "DESC", $limit = 0){
             if($this->tableExists('calls')){
-                if($limit === 0) {
-                    $this->db->query("SELECT * FROM calls ORDER BY $order_by $order ");
+                if($column == ""){
+                    if($limit === 0) {
+                        $this->db->query("SELECT * FROM calls ORDER BY $order_by $order ");
+                    }else {
+                        $this->db->query("SELECT * FROM calls ORDER BY $order_by $order LIMIT $limit");
+                    }
                 }else {
-                    $this->db->query("SELECT * FROM calls ORDER BY $order_by $order LIMIT $limit");
+                    if($limit === 0) {
+                        $this->db->query("SELECT * FROM calls WHERE $column = '$key' ORDER BY $order_by $order ");
+                    }else {
+                        $this->db->query("SELECT * FROM calls WHERE $column = '$key' ORDER BY $order_by $order LIMIT $limit");
+                    }
                 }
+                
 
                 if($this->db->execute()){
                     return $this->db->resultSet();
@@ -33,6 +42,23 @@
                     return false;
                 }
                
+            }
+        }
+
+        public function getAvarageScore($user) {
+            if($this->tableExists('calls')){
+                $this->db->query("SELECT * FROM calls WHERE user = '$user'");
+
+                if($this->db->execute()){
+                    $data = $this->db->resultSet();
+
+                    $score = 0;
+                    foreach($data as $row){
+                        $score = $score + $row->external_call_score;
+                    }
+
+                    return floor($score / $this->db->rowCount());
+                }
             }
         }
 

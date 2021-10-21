@@ -1,7 +1,7 @@
 <?php require APPROOT . "/views/includes/head.php" ?>
 <div class="container">
     <?php require APPROOT . "/views/includes/nav.php" ?>
-    <?php printNav("Edit Call ") ?>
+    <?php printNav("New Call ") ?>
     <div class="call-container">
         <div class="call-form">
             <form action="<?php echo URLROOT ?>/admin/newCall" method="POST">

@@ -48,7 +48,7 @@
             <?php foreach($data['users'] as $user): ?>
                 <div class="user">
                     <h1>User: <span><?php echo $user->user ?></span></h1>
-                    <form action="<?php echo URLROOT . "/admin/user/" . str_replace(" ", "_", $user->user) ?>"><input type="submit" value="View"></form>
+                    <form action="<?php echo URLROOT . "/admin/user/" . str_replace(" ", "_", $user->user) ?>" method="POST"><input type="submit" value="View"></form>
                 </div>
             <?php endforeach; ?>
         </div>
