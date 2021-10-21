@@ -218,16 +218,17 @@
 
             if($_SERVER['REQUEST_METHOD'] === "POST") { //If the method is post we will import the data, if its get we will just display the view,
                 if($_FILES['import-csv']['error'] === 0){ //checking if the $_FILES error attribure is 0 = no errors found, uplaod success
-                    $ext = pathinfo($_FILES['import-csv']['name'], PATHINFO_EXTENSION); //Geting the extens
-                    $whitlisted_ext = ['csv'];
-                    if(in_array($ext, $whitlisted_ext)) {
-                        $file = file($_FILES['import-csv']['tmp_name']);
+                    $ext = pathinfo($_FILES['import-csv']['name'], PATHINFO_EXTENSION); //Geting the extension of our file (.csv, .php , .css etc...)
+                    $whitlisted_ext = ['csv']; //array with permited extemsions
+                    if(in_array($ext, $whitlisted_ext)) { //checking if the uploaded files extensions if alowed or not
+                        $file = file($_FILES['import-csv']['tmp_name']); //retreiving all the data from our csv file
                         $import_data = [];
-                        for($i = 1; $i < count($file); $i++){
-                            $csv_entry[]=explode(',', $file[$i]);
+                        for($i = 1; $i < count($file); $i++){ //for loop to make an array of all rows in our file, going row by row
+                            $csv_entry[]=explode(',', $file[$i]); //converting our sting to an array by seperating all data with comma, 
 
+                            //making an associative array of all the data from one row
                             $row = [
-                                'User' => formatString($csv_entry[0][0]),
+                                'User' => formatString($csv_entry[0][0]), // formating all items to remove " and whitespace from begging and end
                                 'Client' => formatString($csv_entry[0][1]),
                                 'Client Type' => formatString($csv_entry[0][2]),
                                 'Date' => formatString($csv_entry[0][3]),
@@ -236,36 +237,37 @@
                                 'External Call Score' => formatString($csv_entry[0][6]),
                             ];
 
-                            $import_data[] = $row;
+                            $import_data[] = $row; // parsing the row to our array containg all rows
                             $row = [];
                             $csv_entry = [];
                         }
 
+                        //Data user for importing our file
                         $data = [
                             'file-error' => "",
-                            'data' => $import_data,
-                            'date_now' => date("Y-m-d H:i:s"),
+                            'data' => $import_data, //Array containg all rows
+                            'date_now' => date("Y-m-d H:i:s"), //Datetime for importing all data
                         ];
                     }else {
-                        $data['file-error'] = "The file is not supported";
+                        $data['file-error'] = "The file is not supported"; // error if the file type is not supported
                     }
-                }elseif($_FILES['import-csv']['error'] === 4) {
+                }elseif($_FILES['import-csv']['error'] === 4) { //Checking if the $_FILES error atribure is 4, meaning no file was selected
                     $data['file-error'] = "No file selected";
                 }
 
-                if($data['file-error'] === "") {
-                    if($this->adminModel->import($data)){
+                if($data['file-error'] === "") {  //checking if we have no errors
+                    if($this->adminModel->import($data)){ //importing our data with method import from our admin mode, redirecting to our home page if it succeds
                         header("location:". URLROOT . "/admin");
                     } else{
                         die("An error occured");
                     }
                     
                 }else {
-                    $this->view('/admin/import', $data);
+                    $this->view('/admin/import', $data); //redirecting to the import page if we have errors, and printing them out
                 }
 
             }else {
-                $this->view('/admin/import', $data);
+                $this->view('/admin/import', $data); //Displaying import page if method is get
             }
         }
     }
